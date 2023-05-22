@@ -11,7 +11,7 @@ import com.PNM3.Deputy_RESTApi.model.Deputy;
 import com.PNM3.Deputy_RESTApi.service.DeputyService;
 
 @SpringBootApplication
-public class DeputyRestApiApplication implements CommandLineRunner {
+public class DeputyRestApiApplication { //implements CommandLineRunner {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -26,7 +26,7 @@ public class DeputyRestApiApplication implements CommandLineRunner {
 		SpringApplication.run(DeputyRestApiApplication.class, args);
 	}
 
-	
+	/*
 	@Override
     public void run(String... args) throws Exception {
 		
@@ -56,7 +56,7 @@ public class DeputyRestApiApplication implements CommandLineRunner {
             System.out.printf("No city found with id %d%n", id2);
         }
      }
-        
+     */  
 		/*
         String sql = "INSERT INTO deputies (first_name, last_name, int_department, id_political_party) "
         		+ " VALUES ("

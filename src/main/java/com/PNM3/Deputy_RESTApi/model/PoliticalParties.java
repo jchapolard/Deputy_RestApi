@@ -1,16 +1,11 @@
 package com.PNM3.Deputy_RESTApi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="political_parties")
@@ -21,17 +16,12 @@ public class PoliticalParties {
 	
 	@Column(name="labels")
 	private String namePoliticalParty;
+		 
+	// Relation est bidirectionnelle. Cela permet d'accéder aux députés d'un parti politique spécifique.
+	//@OneToMany(mappedBy = "politicalParty")
+    //private List<Deputy> deputies;
 	
-	@Column(name="number_political_party")
-	private String idPoliticalParty;
-
-	@OneToOne(fetch = FetchType.LAZY)
-	@MapsId
-	@JoinColumn(name = "number_political_party")
-	private Deputy deputyy;
-	//@OneToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "number_political_party")
-    
+	
 	
 	public PoliticalParties() {
 		super();
@@ -53,14 +43,4 @@ public class PoliticalParties {
 	public void setNamePoliticalParty(String namePoliticalParty) {
 		this.namePoliticalParty = namePoliticalParty;
 	}
-
-	public String getIdPoliticalParty() {
-		return idPoliticalParty;
-	}
-
-	public void setIdPoliticalParty(String idPoliticalParty) {
-		this.idPoliticalParty = idPoliticalParty;
-	}
-	
-	
 }

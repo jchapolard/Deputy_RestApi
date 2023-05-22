@@ -1,20 +1,14 @@
 package com.PNM3.Deputy_RESTApi.model;
 
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="deputies")
@@ -33,18 +27,14 @@ public class Deputy {
     @Column(name="int_department")
     private Integer intDepartment;
     
-    @Column(name="id_political_party")
-    private Integer idPoliticalParty;
+    //@Column(name="id_political_party")
+    //private Integer idPoliticalParty;
     
-    //@OneToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "id_political_party")
-    //@OneToMany(fetch = FetchType.LAZY, mappedBy = "deputyy")
-    //private PoliticalParties polipart;
-    //private List<PoliticalParties> polipart;
- 
+    @OneToOne
+    @JoinColumn(name="id_political_party")
+    private PoliticalParties politicalParty;
     
-    
-    
+  
     
 	public Deputy() {
 		super();
@@ -83,11 +73,12 @@ public class Deputy {
 		this.intDepartment = intDepartment;
 	}
 
-	public Integer getIdPoliticalParty() {
-		return idPoliticalParty;
+	public PoliticalParties getPoliticalParty() {
+		return politicalParty;
 	}
 
-	public void setIdPoliticalParty(Integer idPoliticalParty) {
-		this.idPoliticalParty = idPoliticalParty;
+	public void setPoliticalParty(PoliticalParties politicalParty) {
+		this.politicalParty = politicalParty;
 	}
+	
 }
